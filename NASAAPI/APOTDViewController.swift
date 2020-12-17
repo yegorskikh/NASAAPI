@@ -13,7 +13,7 @@ class APOTDViewController: UIViewController {
     let imageView = UIImageView()
     let labelDate = UILabel()
     let labelCopyright = UILabel()
-    let labelTitle = UILabel() // Title
+    let labelTitle = UILabel()
     let textView = UITextView()
     let activityIndicatorView = UIActivityIndicatorView()
     
@@ -27,13 +27,14 @@ class APOTDViewController: UIViewController {
     func setupUI() {
         
         let view = UIView()
-        view.backgroundColor = .lightGray
-
+        view.backgroundColor = .white
+        
         view.addSubview(imageView)
         view.addSubview(labelDate)
         view.addSubview(labelCopyright)
         view.addSubview(textView)
         view.addSubview(activityIndicatorView)
+        view.addSubview(labelTitle)
         
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
@@ -45,14 +46,22 @@ class APOTDViewController: UIViewController {
         textView.textAlignment = .center
         textView.isEditable = false
         
+        labelTitle.numberOfLines = 0
+        labelTitle.textAlignment = .center
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         labelDate.translatesAutoresizingMaskIntoConstraints = false
         labelCopyright.translatesAutoresizingMaskIntoConstraints = false
+        labelTitle.translatesAutoresizingMaskIntoConstraints = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            labelTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            labelTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            
+            imageView.topAnchor.constraint(equalTo: labelTitle.topAnchor, constant: 20),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
@@ -78,6 +87,7 @@ class APOTDViewController: UIViewController {
     func uploadPhoto() {
         let networkingAPOTD = NetworkingAPOTD()
         networkingAPOTD.fetchAstronomyPicture { (photoInfo) in
+            
             if let photoInfo = photoInfo {
                 self.updateUI(with: photoInfo)
             }
@@ -97,7 +107,7 @@ class APOTDViewController: UIViewController {
                 self.activityIndicatorView.stopAnimating()
                 self.activityIndicatorView.isHidden = true
                 
-                self.title = modelAPOTD.title
+                self.labelTitle.text = modelAPOTD.title
                 self.imageView.image = image
                 self.textView.text = modelAPOTD.description
                 self.labelCopyright.text = modelAPOTD.copyright ?? " "
