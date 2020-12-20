@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B618D7C258FB086007B3B64 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B618D7B258FB086007B3B64 /* DescriptionViewController.swift */; };
 		7B8D778C258A66AA00842CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D778B258A66AA00842CCB /* AppDelegate.swift */; };
 		7B8D778E258A66AA00842CCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D778D258A66AA00842CCB /* SceneDelegate.swift */; };
 		7B8D7790258A66AA00842CCB /* APOTDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D778F258A66AA00842CCB /* APOTDViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B618D7B258FB086007B3B64 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		7B8D7788258A66AA00842CCB /* NASAAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASAAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8D778B258A66AA00842CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B8D778D258A66AA00842CCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				7B8D77A0258A66E600842CCB /* NetworkingAPOTD.swift */,
 				7B8D77A3258A670F00842CCB /* ModelAPOTD.swift */,
 				7B8D778F258A66AA00842CCB /* APOTDViewController.swift */,
+				7B618D7B258FB086007B3B64 /* DescriptionViewController.swift */,
 				7B8D7791258A66AA00842CCB /* Main.storyboard */,
 				7B8D7794258A66AF00842CCB /* Assets.xcassets */,
 				7B8D7796258A66AF00842CCB /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 				7B8D77A1258A66E600842CCB /* NetworkingAPOTD.swift in Sources */,
 				7B8D7790258A66AA00842CCB /* APOTDViewController.swift in Sources */,
 				7B8D778C258A66AA00842CCB /* AppDelegate.swift in Sources */,
+				7B618D7C258FB086007B3B64 /* DescriptionViewController.swift in Sources */,
 				7B8D778E258A66AA00842CCB /* SceneDelegate.swift in Sources */,
 				7B8D77A4258A670F00842CCB /* ModelAPOTD.swift in Sources */,
 			);

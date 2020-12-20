@@ -14,8 +14,8 @@ class APOTDViewController: UIViewController {
     let labelDate = UILabel()
     let labelCopyright = UILabel()
     let labelTitle = UILabel()
-    let textView = UITextView()
     let activityIndicatorView = UIActivityIndicatorView()
+    let buttonDescriptionVC = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,28 +23,25 @@ class APOTDViewController: UIViewController {
         setupUI()
         uploadPhoto()
     }
-    
+
     func setupUI() {
         
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .darkGray
         
         view.addSubview(imageView)
         view.addSubview(labelDate)
         view.addSubview(labelCopyright)
-        view.addSubview(textView)
         view.addSubview(activityIndicatorView)
         view.addSubview(labelTitle)
+        view.addSubview(buttonDescriptionVC)
         
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         
+        activityIndicatorView.color = .black
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
-        
-        textView.font = UIFont.systemFont(ofSize: 17.0)
-        textView.textAlignment = .center
-        textView.isEditable = false
         
         labelTitle.numberOfLines = 0
         labelTitle.textAlignment = .center
@@ -53,8 +50,21 @@ class APOTDViewController: UIViewController {
         labelDate.translatesAutoresizingMaskIntoConstraints = false
         labelCopyright.translatesAutoresizingMaskIntoConstraints = false
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        buttonDescriptionVC.clipsToBounds = true
+        buttonDescriptionVC.backgroundColor = .purple
+        buttonDescriptionVC.setTitle("description", for: .normal)
+        buttonDescriptionVC.translatesAutoresizingMaskIntoConstraints = false
+        buttonDescriptionVC.addTarget(self, action: #selector(APOTDViewController.buttonAction(_ :)), for: .touchUpInside)
+        buttonDescriptionVC.isHidden = true
+        buttonDescriptionVC.layer.cornerRadius = 10
+        let borderAlpha : CGFloat = 0.7
+        let cornerRadius : CGFloat = 5.0
+        buttonDescriptionVC.backgroundColor = UIColor.clear
+        buttonDescriptionVC.layer.borderWidth = 1.0
+        buttonDescriptionVC.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).cgColor
+        buttonDescriptionVC.layer.cornerRadius = cornerRadius
         
         NSLayoutConstraint.activate([
             labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -66,12 +76,11 @@ class APOTDViewController: UIViewController {
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
             
-            textView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 15),
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            textView.heightAnchor.constraint(equalTo: textView.widthAnchor, multiplier: 0.5),
+            buttonDescriptionVC.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 15),
+            buttonDescriptionVC.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            buttonDescriptionVC.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             
-            labelDate.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 0),
+            labelDate.topAnchor.constraint(equalTo: buttonDescriptionVC.bottomAnchor, constant: 10),
             labelDate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             
             labelCopyright.topAnchor.constraint(equalTo: labelDate.bottomAnchor, constant: 0),
@@ -86,10 +95,10 @@ class APOTDViewController: UIViewController {
     
     func uploadPhoto() {
         let networkingAPOTD = NetworkingAPOTD()
-        networkingAPOTD.fetchAstronomyPicture { (photoInfo) in
+        networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
             
-            if let photoInfo = photoInfo {
-                self.updateUI(with: photoInfo)
+            if let modelAPOTD = modelAPOTD {
+                self.updateUI(with: modelAPOTD)
             }
         }
     }
@@ -106,14 +115,22 @@ class APOTDViewController: UIViewController {
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
                 self.activityIndicatorView.isHidden = true
+                self.buttonDescriptionVC.isHidden = false
                 
                 self.labelTitle.text = modelAPOTD.title
                 self.imageView.image = image
-                self.textView.text = modelAPOTD.description
                 self.labelCopyright.text = modelAPOTD.copyright ?? " "
                 self.labelDate.text = modelAPOTD.date
             }
         }
+    }
+    
+    @objc func buttonAction(_ : UIButton) {
+        print("Button tapped")
+        
+        let descriptionViewController = DescriptionViewController()
+        descriptionViewController.modalPresentationStyle = .fullScreen
+        present(descriptionViewController, animated: true, completion: nil)
     }
     
 }
@@ -125,3 +142,6 @@ extension URL {
         return components?.url
     }
 }
+
+
+

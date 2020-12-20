@@ -11,7 +11,7 @@ struct NetworkingAPOTD {
     
     let url = URL(string: "https://api.nasa.gov")!
     let queryParams = [
-        "api_key": "DEMO_KEY"
+        "api_key": "VqfXT5XcJme395nY9r4IlFSx46bLGtb25tyOELbc"
     ]
     
     func fetchAstronomyPicture(completion: @escaping (ModelAPOTD?) -> Void) {
