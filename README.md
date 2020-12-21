@@ -9,6 +9,7 @@
 - Мнопоточность 
 - Auto Layout
 - JSON
+- UISwipeGestureRecognizer
 
 ![11 46](https://user-images.githubusercontent.com/60622982/102766429-2bd9a400-438f-11eb-882c-779893048df9.gif)
 
