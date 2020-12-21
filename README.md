@@ -12,7 +12,8 @@
 <<<<<<< HEAD
 =======
 
->>>>>>> e220ff7f52e75cb7156a4a7bff49e1658f9d0c26
+![11 46](https://user-images.githubusercontent.com/60622982/102766429-2bd9a400-438f-11eb-882c-779893048df9.gif)
+
 
 ### В дальнейшем 
 
