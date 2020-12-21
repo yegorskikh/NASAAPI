@@ -63,8 +63,6 @@ class DescriptionViewController: UIViewController {
         }
     }
     
-    
-    
     @objc func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
         let transition = CATransition()
         transition.duration = 0.6
