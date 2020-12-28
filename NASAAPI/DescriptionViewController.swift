@@ -9,21 +9,9 @@ import UIKit
 
 class DescriptionViewController: UIViewController {
     
-    let textView = UITextView()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    lazy var textView: UITextView = {
+        let textView = UITextView()
         
-        uploadDescription()
-        setupDescription()
-        
-        view.backgroundColor = .lightGray
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
-        swipeRecognizer.direction = .left
-        view.addGestureRecognizer(swipeRecognizer)
-    }
-    
-    func setupDescription() {
         view.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: 17.0)
@@ -37,6 +25,19 @@ class DescriptionViewController: UIViewController {
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             textView.heightAnchor.constraint(equalTo: textView.widthAnchor, multiplier: 2)
         ])
+        
+        return textView
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        uploadDescription()
+        
+        view.backgroundColor = .lightGray
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
+        swipeRecognizer.direction = .left
+        view.addGestureRecognizer(swipeRecognizer)
     }
     
     func uploadDescription() {

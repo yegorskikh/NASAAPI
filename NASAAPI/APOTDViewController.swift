@@ -10,61 +10,87 @@ import Foundation
 
 class APOTDViewController: UIViewController {
     
-    let imageView = UIImageView()
-    let labelDate = UILabel()
-    let labelCopyright = UILabel()
-    let labelTitle = UILabel()
-    let activityIndicatorView = UIActivityIndicatorView()
-    let buttonDescriptionVC = UIButton()
+    lazy var labelTitle: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupUI()
-        uploadPhoto()
-    }
-
-    func setupUI() {
-        
-        let view = UIView()
-        view.backgroundColor = .darkGray
-        
-        view.addSubview(imageView)
-        view.addSubview(labelDate)
-        view.addSubview(labelCopyright)
-        view.addSubview(activityIndicatorView)
-        view.addSubview(labelTitle)
-        view.addSubview(buttonDescriptionVC)
-        
+    lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
+        return imageView
+    }()
+    
+    lazy var buttonDescriptionVC: UIButton = {
+        let button = UIButton()
+        button.clipsToBounds = true
+        button.backgroundColor = .purple
+        button.setTitle("description", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(APOTDViewController.buttonAction(_ :)), for: .touchUpInside)
+        button.isHidden = true
+        button.layer.cornerRadius = 10
+        let borderAlpha : CGFloat = 0.7
+        let cornerRadius : CGFloat = 5.0
+        button.backgroundColor = UIColor.clear
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).cgColor
+        button.layer.cornerRadius = cornerRadius
+        
+        return button
+    }()
+    
+    lazy var labelDate: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    lazy var labelCopyright: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.color = .black
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
-        
-        labelTitle.numberOfLines = 0
-        labelTitle.textAlignment = .center
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        labelDate.translatesAutoresizingMaskIntoConstraints = false
-        labelCopyright.translatesAutoresizingMaskIntoConstraints = false
-        labelTitle.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         
-        buttonDescriptionVC.clipsToBounds = true
-        buttonDescriptionVC.backgroundColor = .purple
-        buttonDescriptionVC.setTitle("description", for: .normal)
-        buttonDescriptionVC.translatesAutoresizingMaskIntoConstraints = false
-        buttonDescriptionVC.addTarget(self, action: #selector(APOTDViewController.buttonAction(_ :)), for: .touchUpInside)
-        buttonDescriptionVC.isHidden = true
-        buttonDescriptionVC.layer.cornerRadius = 10
-        let borderAlpha : CGFloat = 0.7
-        let cornerRadius : CGFloat = 5.0
-        buttonDescriptionVC.backgroundColor = UIColor.clear
-        buttonDescriptionVC.layer.borderWidth = 1.0
-        buttonDescriptionVC.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).cgColor
-        buttonDescriptionVC.layer.cornerRadius = cornerRadius
+        return activityIndicatorView
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .darkGray
+        
+        addSubviews()
+        setupConstraints()
+        uploadPhoto()
+    }
+
+    private func addSubviews() {
+        self.view.addSubview(imageView)
+        self.view.addSubview(labelDate)
+        self.view.addSubview(labelCopyright)
+        self.view.addSubview(activityIndicatorView)
+        self.view.addSubview(labelTitle)
+        self.view.addSubview(buttonDescriptionVC)
+    }
+    
+    private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -89,11 +115,9 @@ class APOTDViewController: UIViewController {
             activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-        
-        self.view = view
     }
     
-    func uploadPhoto() {
+    private func uploadPhoto() {
         let networkingAPOTD = NetworkingAPOTD()
         networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
             
@@ -103,7 +127,7 @@ class APOTDViewController: UIViewController {
         }
     }
     
-    func updateUI(with modelAPOTD: ModelAPOTD) {
+    private func updateUI(with modelAPOTD: ModelAPOTD) {
         let networkingAPOTD = NetworkingAPOTD()
         networkingAPOTD.fetchUrlData(with: modelAPOTD.url) { (data) in
             guard let data = data,
