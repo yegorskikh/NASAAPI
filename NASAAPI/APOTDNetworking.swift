@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct NetworkingAPOTD {
+struct APOTDNetworking {
     
     let url = URL(string: "https://api.nasa.gov")!
     let queryParams = [
         "api_key": "VqfXT5XcJme395nY9r4IlFSx46bLGtb25tyOELbc"
     ]
     
-    func fetchAstronomyPicture(completion: @escaping (ModelAPOTD?) -> Void) {
+    func fetchAstronomyPicture(completion: @escaping (APOTDModel?) -> Void) {
         guard let url = url
                 .appendingPathComponent("planetary")
                 .appendingPathComponent("apod")
@@ -24,7 +24,7 @@ struct NetworkingAPOTD {
             let jsonDecoder = JSONDecoder()
             if
                 let data = data,
-                let photoInfo = try? jsonDecoder.decode(ModelAPOTD.self, from: data)
+                let photoInfo = try? jsonDecoder.decode(APOTDModel.self, from: data)
             {
                 completion(photoInfo)
             } else {

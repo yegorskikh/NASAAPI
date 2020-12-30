@@ -24,6 +24,9 @@ class APOTDViewController: UIViewController {
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imageView.addGestureRecognizer(tap)
         
         return imageView
     }()
@@ -70,7 +73,7 @@ class APOTDViewController: UIViewController {
         
         return activityIndicatorView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,7 +83,7 @@ class APOTDViewController: UIViewController {
         setupConstraints()
         uploadPhoto()
     }
-
+    
     private func addSubviews() {
         self.view.addSubview(imageView)
         self.view.addSubview(labelDate)
@@ -118,7 +121,7 @@ class APOTDViewController: UIViewController {
     }
     
     private func uploadPhoto() {
-        let networkingAPOTD = NetworkingAPOTD()
+        let networkingAPOTD = APOTDNetworking()
         networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
             
             if let modelAPOTD = modelAPOTD {
@@ -127,8 +130,8 @@ class APOTDViewController: UIViewController {
         }
     }
     
-    private func updateUI(with modelAPOTD: ModelAPOTD) {
-        let networkingAPOTD = NetworkingAPOTD()
+    private func updateUI(with modelAPOTD: APOTDModel) {
+        let networkingAPOTD = APOTDNetworking()
         networkingAPOTD.fetchUrlData(with: modelAPOTD.url) { (data) in
             guard let data = data,
                   let image = UIImage(data: data)
@@ -155,6 +158,25 @@ class APOTDViewController: UIViewController {
         let descriptionViewController = DescriptionViewController()
         descriptionViewController.modalPresentationStyle = .fullScreen
         present(descriptionViewController, animated: true, completion: nil)
+    }
+    
+    
+    @objc func imageTapped(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .purple
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
     }
     
 }

@@ -14,8 +14,8 @@
 		7B8D7793258A66AA00842CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8D7791258A66AA00842CCB /* Main.storyboard */; };
 		7B8D7795258A66AF00842CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B8D7794258A66AF00842CCB /* Assets.xcassets */; };
 		7B8D7798258A66AF00842CCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8D7796258A66AF00842CCB /* LaunchScreen.storyboard */; };
-		7B8D77A1258A66E600842CCB /* NetworkingAPOTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D77A0258A66E600842CCB /* NetworkingAPOTD.swift */; };
-		7B8D77A4258A670F00842CCB /* ModelAPOTD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D77A3258A670F00842CCB /* ModelAPOTD.swift */; };
+		7B8D77A1258A66E600842CCB /* APOTDNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D77A0258A66E600842CCB /* APOTDNetworking.swift */; };
+		7B8D77A4258A670F00842CCB /* APOTDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D77A3258A670F00842CCB /* APOTDModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 		7B8D7794258A66AF00842CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B8D7797258A66AF00842CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B8D7799258A66AF00842CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B8D77A0258A66E600842CCB /* NetworkingAPOTD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingAPOTD.swift; sourceTree = "<group>"; };
-		7B8D77A3258A670F00842CCB /* ModelAPOTD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAPOTD.swift; sourceTree = "<group>"; };
+		7B8D77A0258A66E600842CCB /* APOTDNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTDNetworking.swift; sourceTree = "<group>"; };
+		7B8D77A3258A670F00842CCB /* APOTDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTDModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +64,8 @@
 			children = (
 				7B8D778B258A66AA00842CCB /* AppDelegate.swift */,
 				7B8D778D258A66AA00842CCB /* SceneDelegate.swift */,
-				7B8D77A0258A66E600842CCB /* NetworkingAPOTD.swift */,
-				7B8D77A3258A670F00842CCB /* ModelAPOTD.swift */,
+				7B8D77A0258A66E600842CCB /* APOTDNetworking.swift */,
+				7B8D77A3258A670F00842CCB /* APOTDModel.swift */,
 				7B8D778F258A66AA00842CCB /* APOTDViewController.swift */,
 				7B618D7B258FB086007B3B64 /* DescriptionViewController.swift */,
 				7B8D7791258A66AA00842CCB /* Main.storyboard */,
@@ -146,12 +146,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B8D77A1258A66E600842CCB /* NetworkingAPOTD.swift in Sources */,
+				7B8D77A1258A66E600842CCB /* APOTDNetworking.swift in Sources */,
 				7B8D7790258A66AA00842CCB /* APOTDViewController.swift in Sources */,
 				7B8D778C258A66AA00842CCB /* AppDelegate.swift in Sources */,
 				7B618D7C258FB086007B3B64 /* DescriptionViewController.swift in Sources */,
 				7B8D778E258A66AA00842CCB /* SceneDelegate.swift in Sources */,
-				7B8D77A4258A670F00842CCB /* ModelAPOTD.swift in Sources */,
+				7B8D77A4258A670F00842CCB /* APOTDModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,16 +32,16 @@ class DescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        uploadDescription()
-        
         view.backgroundColor = .lightGray
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
-        swipeRecognizer.direction = .left
-        view.addGestureRecognizer(swipeRecognizer)
+        
+        uploadDescription()
+        swipeRecognizer()
     }
     
+    
+    
     func uploadDescription() {
-        let networkingAPOTD = NetworkingAPOTD()
+        let networkingAPOTD = APOTDNetworking()
         networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
             
             if let modelAPOTD = modelAPOTD {
@@ -50,8 +50,8 @@ class DescriptionViewController: UIViewController {
         }
     }
     
-    func updateDescription(with modelAPOTD: ModelAPOTD) {
-        let networkingAPOTD = NetworkingAPOTD()
+    func updateDescription(with modelAPOTD: APOTDModel) {
+        let networkingAPOTD = APOTDNetworking()
         networkingAPOTD.fetchUrlData(with: modelAPOTD.url) { (data) in
             guard let _ = data
             else {
@@ -62,6 +62,33 @@ class DescriptionViewController: UIViewController {
                 self.textView.text = modelAPOTD.description
             }
         }
+    }
+    
+    /*
+     func uploadDescription() {
+         let networkingAPOTD = APOTDNetworking()
+         networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
+             
+             if let modelAPOTD = modelAPOTD {
+                 networkingAPOTD.fetchUrlData(with: modelAPOTD.url) { (data) in
+                     guard let _ = data
+                     else {
+                         return
+                     }
+                     DispatchQueue.main.async {
+                         self.textView.text = modelAPOTD.description
+                     }
+                 }
+             }
+             
+         }
+     }
+     */
+    
+    func swipeRecognizer() {
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
+        swipeRecognizer.direction = .left
+        view.addGestureRecognizer(swipeRecognizer)
     }
     
     @objc func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
