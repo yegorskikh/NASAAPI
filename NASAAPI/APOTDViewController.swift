@@ -153,28 +153,25 @@ class APOTDViewController: UIViewController {
     }
     
     @objc func buttonAction(_ : UIButton) {
-        print("Button tapped")
-        
         let descriptionViewController = DescriptionViewController()
         descriptionViewController.modalPresentationStyle = .fullScreen
         present(descriptionViewController, animated: true, completion: nil)
     }
     
-    
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
         newImageView.frame = UIScreen.main.bounds
-        newImageView.backgroundColor = .purple
         newImageView.contentMode = .scaleAspectFit
         newImageView.isUserInteractionEnabled = true
+        newImageView.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
         newImageView.addGestureRecognizer(tap)
         self.view.addSubview(newImageView)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-        self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
     }
@@ -188,6 +185,3 @@ extension URL {
         return components?.url
     }
 }
-
-
-

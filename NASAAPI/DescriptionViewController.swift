@@ -11,7 +11,6 @@ class DescriptionViewController: UIViewController {
     
     lazy var textView: UITextView = {
         let textView = UITextView()
-        
         view.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: 17.0)
@@ -38,8 +37,6 @@ class DescriptionViewController: UIViewController {
         swipeRecognizer()
     }
     
-    
-    
     func uploadDescription() {
         let networkingAPOTD = APOTDNetworking()
         networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
@@ -57,33 +54,11 @@ class DescriptionViewController: UIViewController {
             else {
                 return
             }
-            
             DispatchQueue.main.async {
                 self.textView.text = modelAPOTD.description
             }
         }
     }
-    
-    /*
-     func uploadDescription() {
-         let networkingAPOTD = APOTDNetworking()
-         networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
-             
-             if let modelAPOTD = modelAPOTD {
-                 networkingAPOTD.fetchUrlData(with: modelAPOTD.url) { (data) in
-                     guard let _ = data
-                     else {
-                         return
-                     }
-                     DispatchQueue.main.async {
-                         self.textView.text = modelAPOTD.description
-                     }
-                 }
-             }
-             
-         }
-     }
-     */
     
     func swipeRecognizer() {
         let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
