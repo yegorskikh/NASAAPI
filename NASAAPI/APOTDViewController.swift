@@ -15,6 +15,7 @@ class APOTDViewController: UIViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
         
         return label
     }()
@@ -53,6 +54,7 @@ class APOTDViewController: UIViewController {
     lazy var labelDate: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
         
         return label
     }()
@@ -60,13 +62,14 @@ class APOTDViewController: UIViewController {
     lazy var labelCopyright: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
         
         return label
     }()
     
     lazy var activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.color = .black
+        activityIndicatorView.color = .white
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +80,7 @@ class APOTDViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .darkGray
+        self.view.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
         
         addSubviews()
         setupConstraints()
