@@ -7,27 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B618D7C258FB086007B3B64 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B618D7B258FB086007B3B64 /* DescriptionViewController.swift */; };
+		7B3AF11225ADAFA5001CAE95 /* APOTDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3AF11125ADAFA5001CAE95 /* APOTDView.swift */; };
+		7B3AF11525ADB0C5001CAE95 /* APOTDDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3AF11425ADB0C5001CAE95 /* APOTDDescriptionView.swift */; };
+		7B618D7C258FB086007B3B64 /* APOTDDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B618D7B258FB086007B3B64 /* APOTDDescriptionViewController.swift */; };
 		7B8D778C258A66AA00842CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D778B258A66AA00842CCB /* AppDelegate.swift */; };
 		7B8D778E258A66AA00842CCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D778D258A66AA00842CCB /* SceneDelegate.swift */; };
 		7B8D7790258A66AA00842CCB /* APOTDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D778F258A66AA00842CCB /* APOTDViewController.swift */; };
 		7B8D7795258A66AF00842CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B8D7794258A66AF00842CCB /* Assets.xcassets */; };
-		7B8D7798258A66AF00842CCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8D7796258A66AF00842CCB /* LaunchScreen.storyboard */; };
 		7B8D77A1258A66E600842CCB /* APOTDNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D77A0258A66E600842CCB /* APOTDNetworking.swift */; };
 		7B8D77A4258A670F00842CCB /* APOTDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D77A3258A670F00842CCB /* APOTDModel.swift */; };
+		7BD9C39725ACA27200BFA05E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9C39625ACA27200BFA05E /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7B618D7B258FB086007B3B64 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		7B3AF11125ADAFA5001CAE95 /* APOTDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTDView.swift; sourceTree = "<group>"; };
+		7B3AF11425ADB0C5001CAE95 /* APOTDDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTDDescriptionView.swift; sourceTree = "<group>"; };
+		7B618D7B258FB086007B3B64 /* APOTDDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTDDescriptionViewController.swift; sourceTree = "<group>"; };
 		7B8D7788258A66AA00842CCB /* NASAAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASAAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8D778B258A66AA00842CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B8D778D258A66AA00842CCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7B8D778F258A66AA00842CCB /* APOTDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTDViewController.swift; sourceTree = "<group>"; };
 		7B8D7794258A66AF00842CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7B8D7797258A66AF00842CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B8D7799258A66AF00842CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B8D77A0258A66E600842CCB /* APOTDNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTDNetworking.swift; sourceTree = "<group>"; };
 		7B8D77A3258A670F00842CCB /* APOTDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTDModel.swift; sourceTree = "<group>"; };
+		7BD9C39625ACA27200BFA05E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +64,107 @@
 		7B8D778A258A66AA00842CCB /* NASAAPI */ = {
 			isa = PBXGroup;
 			children = (
-				7B8D778B258A66AA00842CCB /* AppDelegate.swift */,
-				7B8D778D258A66AA00842CCB /* SceneDelegate.swift */,
-				7B8D77A0258A66E600842CCB /* APOTDNetworking.swift */,
-				7B8D77A3258A670F00842CCB /* APOTDModel.swift */,
-				7B8D778F258A66AA00842CCB /* APOTDViewController.swift */,
-				7B618D7B258FB086007B3B64 /* DescriptionViewController.swift */,
-				7B8D7794258A66AF00842CCB /* Assets.xcassets */,
-				7B8D7796258A66AF00842CCB /* LaunchScreen.storyboard */,
-				7B8D7799258A66AF00842CCB /* Info.plist */,
+				7BD9C39925ACA29600BFA05E /* Apllication */,
+				7BD9C39E25ACA47E00BFA05E /* APOTD */,
+				7BD9C3A325AD993E00BFA05E /* Supporting Files */,
 			);
 			path = NASAAPI;
+			sourceTree = "<group>";
+		};
+		7BD9C39525ACA23100BFA05E /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				7BD9C39625ACA27200BFA05E /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		7BD9C39925ACA29600BFA05E /* Apllication */ = {
+			isa = PBXGroup;
+			children = (
+				7BD9C39C25ACA2C800BFA05E /* Model */,
+				7BD9C39B25ACA2BC00BFA05E /* View */,
+				7BD9C39A25ACA2B300BFA05E /* Controller */,
+				7BD9C39525ACA23100BFA05E /* NetworkService */,
+			);
+			path = Apllication;
+			sourceTree = "<group>";
+		};
+		7BD9C39A25ACA2B300BFA05E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B8D778B258A66AA00842CCB /* AppDelegate.swift */,
+				7B8D778D258A66AA00842CCB /* SceneDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BD9C39B25ACA2BC00BFA05E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BD9C39C25ACA2C800BFA05E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BD9C39E25ACA47E00BFA05E /* APOTD */ = {
+			isa = PBXGroup;
+			children = (
+				7BD9C3A225ACA67C00BFA05E /* Model */,
+				7BD9C3A125ACA67300BFA05E /* View */,
+				7BD9C3A025ACA66800BFA05E /* Controller */,
+				7BD9C39F25ACA64900BFA05E /* APOTDNetwork */,
+			);
+			path = APOTD;
+			sourceTree = "<group>";
+		};
+		7BD9C39F25ACA64900BFA05E /* APOTDNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				7B8D77A0258A66E600842CCB /* APOTDNetworking.swift */,
+			);
+			path = APOTDNetwork;
+			sourceTree = "<group>";
+		};
+		7BD9C3A025ACA66800BFA05E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B8D778F258A66AA00842CCB /* APOTDViewController.swift */,
+				7B618D7B258FB086007B3B64 /* APOTDDescriptionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BD9C3A125ACA67300BFA05E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B3AF11125ADAFA5001CAE95 /* APOTDView.swift */,
+				7B3AF11425ADB0C5001CAE95 /* APOTDDescriptionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BD9C3A225ACA67C00BFA05E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B8D77A3258A670F00842CCB /* APOTDModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BD9C3A325AD993E00BFA05E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B8D7794258A66AF00842CCB /* Assets.xcassets */,
+				7B8D7799258A66AF00842CCB /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +224,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B8D7798258A66AF00842CCB /* LaunchScreen.storyboard in Resources */,
 				7B8D7795258A66AF00842CCB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,25 +237,17 @@
 			files = (
 				7B8D77A1258A66E600842CCB /* APOTDNetworking.swift in Sources */,
 				7B8D7790258A66AA00842CCB /* APOTDViewController.swift in Sources */,
+				7B3AF11225ADAFA5001CAE95 /* APOTDView.swift in Sources */,
 				7B8D778C258A66AA00842CCB /* AppDelegate.swift in Sources */,
-				7B618D7C258FB086007B3B64 /* DescriptionViewController.swift in Sources */,
+				7B618D7C258FB086007B3B64 /* APOTDDescriptionViewController.swift in Sources */,
+				7B3AF11525ADB0C5001CAE95 /* APOTDDescriptionView.swift in Sources */,
 				7B8D778E258A66AA00842CCB /* SceneDelegate.swift in Sources */,
+				7BD9C39725ACA27200BFA05E /* NetworkService.swift in Sources */,
 				7B8D77A4258A670F00842CCB /* APOTDModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		7B8D7796258A66AF00842CCB /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7B8D7797258A66AF00842CCB /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7B8D779A258A66AF00842CCB /* Debug */ = {
@@ -288,7 +373,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68FXT4UH73;
-				INFOPLIST_FILE = NASAAPI/Info.plist;
+				INFOPLIST_FILE = "NASAAPI/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +392,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68FXT4UH73;
-				INFOPLIST_FILE = NASAAPI/Info.plist;
+				INFOPLIST_FILE = "NASAAPI/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

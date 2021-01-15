@@ -30,7 +30,12 @@ struct APOTDModel: Codable {
         return mediaType == "image"
     }
     
+    var isVideo: Bool {
+        return mediaType == "video"
+    }
+    
     init(from decoder: Decoder) throws {
+        
         let valueContainer = try decoder.container(keyedBy: Keys.self)
         
         self.title = try valueContainer.decode(String.self, forKey: Keys.title)

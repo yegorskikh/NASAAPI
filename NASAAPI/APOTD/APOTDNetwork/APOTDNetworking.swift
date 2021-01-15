@@ -9,16 +9,9 @@ import Foundation
 
 struct APOTDNetworking {
     
-    let url = URL(string: "https://api.nasa.gov")!
-    let queryParams = [
-        "api_key": "VqfXT5XcJme395nY9r4IlFSx46bLGtb25tyOELbc"
-    ]
-    
     func fetchAstronomyPicture(completion: @escaping (APOTDModel?) -> Void) {
-        guard let url = url
-                .appendingPathComponent("planetary")
-                .appendingPathComponent("apod")
-                .withQueries(queryParams) else { return }
+        
+        guard let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             let jsonDecoder = JSONDecoder()
