@@ -9,7 +9,7 @@ import UIKit
 
 class APOTDView: UIView {
     
-    var labelTitle: UILabel = {
+    lazy var labelTitle: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -19,26 +19,22 @@ class APOTDView: UIView {
         return label
     }()
     
-    var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.isUserInteractionEnabled = true
-        //      let tap = UITapGestureRecognizer(target: self, action: #selector((imageTapped)))
-        //      imageView.addGestureRecognizer(tap)
-        
+
         return imageView
     }()
     
-    var buttonDescriptionVC: UIButton = {
+    lazy var buttonDescriptionVC: UIButton = {
         let button = UIButton()
         button.clipsToBounds = true
         button.backgroundColor = .purple
         button.setTitle("description", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(APOTDViewController.buttonAction(_ :)), for: .touchUpInside)
         button.isHidden = true
         button.layer.cornerRadius = 10
         let borderAlpha : CGFloat = 0.7
@@ -51,7 +47,7 @@ class APOTDView: UIView {
         return button
     }()
     
-    var labelDate: UILabel = {
+    lazy var labelDate: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
@@ -59,7 +55,7 @@ class APOTDView: UIView {
         return label
     }()
     
-    var labelCopyright: UILabel = {
+    lazy var labelCopyright: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
@@ -67,7 +63,7 @@ class APOTDView: UIView {
         return label
     }()
     
-    var activityIndicatorView: UIActivityIndicatorView = {
+    lazy var activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.color = .white
         activityIndicatorView.isHidden = false
@@ -77,5 +73,6 @@ class APOTDView: UIView {
         return activityIndicatorView
     }()
     
+
 }
 
