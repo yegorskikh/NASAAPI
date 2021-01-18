@@ -10,7 +10,8 @@
 - json
 - Распознавание жестов 
 
-![nasaapigif](https://user-images.githubusercontent.com/60622982/104104562-f4895380-52b9-11eb-9f29-e1487a35926b.gif)
+![гитхаб](https://user-images.githubusercontent.com/60622982/104936786-0c4d8f80-59be-11eb-8134-b18d1546c811.gif)
+
 
 ### В дальнейшем 
 
