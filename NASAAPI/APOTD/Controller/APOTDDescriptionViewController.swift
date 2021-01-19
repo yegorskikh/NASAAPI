@@ -22,11 +22,11 @@ class APOTDDescriptionViewController: UIViewController {
         setupConstraint()
     }
     
-    func addSubviews() {
+    private func addSubviews() {
         view.addSubview(adv.textView)
     }
     
-    func setupConstraint() {
+    private func setupConstraint() {
         
         NSLayoutConstraint.activate([
             adv.textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -36,7 +36,7 @@ class APOTDDescriptionViewController: UIViewController {
         ])
     }
 
-func uploadDescription() {
+    private func uploadDescription() {
     let networkingAPOTD = APOTDNetworking()
     networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
 
@@ -46,7 +46,7 @@ func uploadDescription() {
     }
 }
 
-func updateDescription(with modelAPOTD: APOTDModel) {
+    private func updateDescription(with modelAPOTD: APOTDModel) {
 
     let networkingAPOTD = APOTDNetworking()
     networkingAPOTD.fetchUrlData(with: modelAPOTD.url) { (data) in

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Foundation
 
 class APOTDViewController: UIViewController {
     
@@ -15,7 +14,7 @@ class APOTDViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
+        self.view.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
         addSubviews()
         setupConstraints()
         buttonActionAndimageTapped()
@@ -23,13 +22,8 @@ class APOTDViewController: UIViewController {
         
     }
     
-    private func setupView() {
-        view.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
-    }
-    
     private func buttonActionAndimageTapped() {
         av.buttonDescriptionVC.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector((imageTapped)))
         av.imageView.addGestureRecognizer(tap)
     }
@@ -109,32 +103,21 @@ class APOTDViewController: UIViewController {
         present(apotdDescriptionViewController, animated: true, completion: nil)
     }
     
-    
-    // TODO: "hmmm"
-        @objc func imageTapped(_ sender: UITapGestureRecognizer) {
-            let imageView = sender.view as! UIImageView
-            let newImageView = UIImageView(image: imageView.image)
-            newImageView.frame = UIScreen.main.bounds
-            newImageView.contentMode = .scaleAspectFit
-            newImageView.isUserInteractionEnabled = true
-            newImageView.backgroundColor = UIColor.black.withAlphaComponent(0.75)
-            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-            newImageView.addGestureRecognizer(tap)
-            self.view.addSubview(newImageView)
-        }
-    
+    @objc func imageTapped(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        newImageView.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+    }
     
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.tabBarController?.tabBar.isHidden = false // 
         sender.view?.removeFromSuperview()
     }
     
-}
-
-extension URL {
-    func withQueries(_ queries: [String: String]) -> URL? {
-        var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
-        components?.queryItems = queries.compactMap({ URLQueryItem(name: $0.0, value: $0.1) })
-        return components?.url
-    }
 }
