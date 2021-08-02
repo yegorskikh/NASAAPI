@@ -7,27 +7,26 @@
 
 import UIKit
 
-final class APOTDDescriptionViewController: UIViewController {
+final class APODDescriptionViewController: UIViewController {
     
-    let adv = APOTDDescriptionView()
+    let adv = APODDescriptionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
-        
+
         uploadDescription()
         swipeRecognizer()
         addSubviews()
-        setupConstraint()
+        storeConstraint()
     }
+
     
     private func addSubviews() {
+        self.view.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         view.addSubview(adv.textView)
     }
     
-    private func setupConstraint() {
-        
+    private func storeConstraint() {
         NSLayoutConstraint.activate([
             adv.textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             adv.textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
@@ -37,26 +36,28 @@ final class APOTDDescriptionViewController: UIViewController {
     }
 
     private func uploadDescription() {
-    let networkingAPOTD = APOTDNetworking()
+    let networkingAPOTD = APODNetworking()
     networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
 
         if let modelAPOTD = modelAPOTD {
             self.updateDescription(with: modelAPOTD)
         }
+
     }
 }
 
-    private func updateDescription(with modelAPOTD: APOTDModel) {
+    private func updateDescription(with modelAPOTD: APODModel) {
 
-    let networkingAPOTD = APOTDNetworking()
-    networkingAPOTD.fetchUrlData(with: modelAPOTD.url) { (data) in
-        guard let _ = data
-        else {
-            return
-        }
+    let networkingAPOD = APODNetworking()
+
+    networkingAPOD.fetchUrlData(with: modelAPOTD.url) { (data) in
+
+        guard let _ = data else { return }
+
         DispatchQueue.main.async {
             self.adv.textView.text = modelAPOTD.description
         }
+        
     }
 
 }

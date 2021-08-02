@@ -1,5 +1,5 @@
 //
-//  APOTDView.swift
+//  APODView.swift
 //  NASAAPI
 //
 //  Created by Егор Горских on 12.01.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class APOTDView: UIView {
+final class APODView: UIView {
     
     lazy var labelTitle: UILabel = {
         let label = UILabel()
@@ -37,8 +37,8 @@ final class APOTDView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
         button.layer.cornerRadius = 10
-        let borderAlpha : CGFloat = 0.7
-        let cornerRadius : CGFloat = 5.0
+        let borderAlpha: CGFloat = 0.7
+        let cornerRadius: CGFloat = 5.0
         button.backgroundColor = UIColor.clear
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).cgColor

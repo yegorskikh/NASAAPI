@@ -7,21 +7,29 @@
 
 import UIKit
 
-final class APOTDViewController: UIViewController {
+final class APODViewController: UIViewController {
     
-    let av = APOTDView()
+    let av = APODView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+
+        setupNavigationController()
         addSubviews()
-        setupConstraints()
+        storeConstraints()
         buttonActionAndimageTapped()
         uploadPhoto()
         
     }
-    
+
+    func setupNavigationController() {
+        self.view.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "apod"
+        view.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+
     private func buttonActionAndimageTapped() {
         av.buttonDescriptionVC.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
         let tap = UITapGestureRecognizer(target: self, action: #selector((imageTapped)))
@@ -29,6 +37,7 @@ final class APOTDViewController: UIViewController {
     }
     
     private func addSubviews() {
+
         view.addSubview(av.imageView)
         view.addSubview(av.labelDate)
         view.addSubview(av.labelCopyright)
@@ -37,7 +46,7 @@ final class APOTDViewController: UIViewController {
         view.addSubview(av.buttonDescriptionVC)
     }
     
-    private func setupConstraints() {
+    private func storeConstraints() {
         
         NSLayoutConstraint.activate([
             av.labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -66,7 +75,7 @@ final class APOTDViewController: UIViewController {
     }
     
     private func uploadPhoto() {
-        let networkingAPOTD = APOTDNetworking()
+        let networkingAPOTD = APODNetworking()
         networkingAPOTD.fetchAstronomyPicture { (modelAPOTD) in
             
             if let modelAPOTD = modelAPOTD {
@@ -75,11 +84,13 @@ final class APOTDViewController: UIViewController {
         }
     }
     
-    private func updateUI(with modelAPOTD: APOTDModel) {
-        let networkingAPOTD = APOTDNetworking()
+    private func updateUI(with modelAPOTD: APODModel) {
+        let networkingAPOTD = APODNetworking()
+        
         networkingAPOTD.fetchUrlData(with: modelAPOTD.url) { (data) in
-            guard let data = data,
-                  let image = UIImage(data: data)
+            guard
+                let data = data,
+                let image = UIImage(data: data)
             else {
                 return
             }
@@ -98,7 +109,7 @@ final class APOTDViewController: UIViewController {
     }
     
     @objc func buttonAction(_ : UIButton) {
-        let apotdDescriptionViewController = APOTDDescriptionViewController()
+        let apotdDescriptionViewController = APODDescriptionViewController()
         apotdDescriptionViewController.modalPresentationStyle = .fullScreen
         present(apotdDescriptionViewController, animated: true, completion: nil)
     }
@@ -117,7 +128,6 @@ final class APOTDViewController: UIViewController {
     }
     
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-        self.tabBarController?.tabBar.isHidden = false // 
         sender.view?.removeFromSuperview()
     }
     

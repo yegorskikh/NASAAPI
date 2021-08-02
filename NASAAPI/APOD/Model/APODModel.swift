@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APOTDModel: Codable {
+struct APODModel: Codable {
     
     var title: String
     var description: String

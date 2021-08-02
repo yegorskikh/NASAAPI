@@ -1,5 +1,5 @@
 //
-//  APOTDDescriptionViewController.swift
+//  APODDescriptionViewController.swift
 //  NASAAPI
 //
 //  Created by Егор Горских on 12.01.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class APOTDDescriptionView: UIView {
+final class APODDescriptionView: UIView {
     
     lazy var textView: UITextView = {
         
