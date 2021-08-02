@@ -82,35 +82,19 @@
 		7BD9C39925ACA29600BFA05E /* Apllication */ = {
 			isa = PBXGroup;
 			children = (
-				7BD9C39C25ACA2C800BFA05E /* Model */,
-				7BD9C39B25ACA2BC00BFA05E /* View */,
-				7BD9C39A25ACA2B300BFA05E /* Controller */,
+				7BD9C39A25ACA2B300BFA05E /* AppDelegate */,
 				7BD9C39525ACA23100BFA05E /* NetworkService */,
 			);
 			path = Apllication;
 			sourceTree = "<group>";
 		};
-		7BD9C39A25ACA2B300BFA05E /* Controller */ = {
+		7BD9C39A25ACA2B300BFA05E /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				7B8D778B258A66AA00842CCB /* AppDelegate.swift */,
 				7B8D778D258A66AA00842CCB /* SceneDelegate.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		7BD9C39B25ACA2BC00BFA05E /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		7BD9C39C25ACA2C800BFA05E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		7BD9C39E25ACA47E00BFA05E /* APOTD */ = {

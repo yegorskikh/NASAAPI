@@ -7,7 +7,7 @@
 
 import UIKit
 
-class APOTDViewController: UIViewController {
+final class APOTDViewController: UIViewController {
     
     let av = APOTDView()
     
@@ -110,6 +110,7 @@ class APOTDViewController: UIViewController {
         newImageView.contentMode = .scaleAspectFit
         newImageView.isUserInteractionEnabled = true
         newImageView.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
         newImageView.addGestureRecognizer(tap)
         self.view.addSubview(newImageView)

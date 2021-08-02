@@ -7,9 +7,10 @@
 
 import UIKit
 
-class APOTDDescriptionView: UIView {
+final class APOTDDescriptionView: UIView {
     
     lazy var textView: UITextView = {
+        
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: 17.0)

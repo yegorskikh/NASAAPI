@@ -7,7 +7,7 @@
 
 import UIKit
 
-class APOTDDescriptionViewController: UIViewController {
+final class APOTDDescriptionViewController: UIViewController {
     
     let adv = APOTDDescriptionView()
     

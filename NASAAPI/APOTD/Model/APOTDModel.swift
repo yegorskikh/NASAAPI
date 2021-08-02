@@ -37,7 +37,6 @@ struct APOTDModel: Codable {
     init(from decoder: Decoder) throws {
         
         let valueContainer = try decoder.container(keyedBy: Keys.self)
-        
         self.title = try valueContainer.decode(String.self, forKey: Keys.title)
         self.description = try valueContainer.decode(String.self, forKey: Keys.description)
         self.url = try valueContainer.decode(URL.self, forKey: Keys.url)
